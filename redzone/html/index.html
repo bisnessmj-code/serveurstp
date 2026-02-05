@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REDZONE LEAGUE</title>
+
+    <!-- Google Fonts - Rajdhani, Roboto, Poppins, Teko & Syncopate -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;900&family=Rajdhani:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&family=Syncopate:wght@700&family=Teko:wght@500;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Container principal - caché par défaut -->
+    <div id="app" class="app-container hidden">
+
+        <!-- Overlay de fond -->
+        <div class="overlay"></div>
+
+        <!-- Interface principale (style tablette) -->
+        <div class="tablet-container">
+
+            <!-- Header -->
+            <header class="tablet-header">
+                <div class="header-left">
+                    <img src="assets/logo.png" alt="Redzone Logo" class="logo" onerror="this.style.display='none'">
+                    <div class="header-title">
+                        <h1>REDZONE</h1>
+                        <span class="subtitle">LEAGUE</span>
+                    </div>
+                </div>
+                <div class="header-right">
+                    <div class="status-indicator">
+                        <span class="status-dot"></span>
+                        <span class="status-text">EN LIGNE</span>
+                    </div>
+                    <button class="btn-close" id="btnClose">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Navigation par onglets -->
+            <nav class="tablet-nav">
+                <button class="nav-tab active" data-tab="rules">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                    <span>Règles</span>
+                </button>
+                <button class="nav-tab" data-tab="spawn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                        <circle cx="12" cy="10" r="3"></circle>
+                    </svg>
+                    <span>Zones</span>
+                </button>
+            </nav>
+
+            <!-- Contenu principal -->
+            <main class="tablet-content">
+
+                <!-- Section Règles -->
+                <section id="tab-rules" class="tab-content active">
+                    <div class="content-card">
+                        <div class="card-header">
+                            <h2>RÈGLES DU JEU</h2>
+                            <p class="card-subtitle">Veuillez lire attentivement avant de jouer</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="rules-list" id="rulesList">
+                                <!-- Les règles seront injectées ici par JavaScript -->
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <label class="checkbox-container">
+                                <input type="checkbox" id="acceptRules">
+                                <span class="checkmark"></span>
+                                <span class="checkbox-label">J'ai lu et j'accepte les règles du REDZONE LEAGUE</span>
+                            </label>
+                            <button class="btn btn-primary" id="btnAcceptRules" disabled>
+                                <span>Accepter les règles</span>
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Section Zones de Spawn -->
+                <section id="tab-spawn" class="tab-content">
+                    <div class="content-card">
+                        <div class="card-header">
+                            <h2>CHOISIR UNE ZONE</h2>
+                            <p class="card-subtitle">Sélectionnez votre point de téléportation</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="spawn-grid" id="spawnGrid">
+                                <!-- Les points de spawn seront injectés ici par JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+
+            <!-- Footer -->
+            <footer class="tablet-footer">
+                <span class="footer-text">REDZONE LEAGUE v1.0.0</span>
+                <span class="footer-separator">|</span>
+                <span class="footer-text">Appuyez sur ESC pour fermer</span>
+            </footer>
+
+        </div>
+    </div>
+
+    <!-- Death Screen Container - caché par défaut -->
+    <div id="death-screen" class="death-container hidden">
+        <div class="death-overlay"></div>
+        <div class="death-content">
+            <h1 class="death-title" id="deathTitle">VOUS ÊTES EN TRAIN DE MOURIR</h1>
+            <p class="death-subtitle" id="deathMessage">Vous êtes gravement blessé</p>
+
+            <div class="death-timer-container">
+                <div class="death-time-box" id="minTens">0</div>
+                <div class="death-time-box" id="minUnits">0</div>
+                <div class="death-separator">:</div>
+                <div class="death-time-box" id="secTens">3</div>
+                <div class="death-time-box" id="secUnits">0</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Revive Progress Container - caché par défaut (pour le joueur qui réanime) -->
+    <div class="revive-progress-container hidden" id="reviveProgressContainer">
+        <div class="revive-circle">
+            <svg class="revive-svg" viewBox="0 0 100 100">
+                <!-- Cercle de fond -->
+                <circle class="revive-circle-bg" cx="50" cy="50" r="45"></circle>
+                <!-- Cercle de progression -->
+                <circle class="revive-circle-progress" id="reviveCircleProgress" cx="50" cy="50" r="45"></circle>
+            </svg>
+            <div class="revive-center">
+                <img src="assets/logo.png" alt="Logo" class="revive-logo" onerror="this.style.display='none'">
+                <div class="revive-timer" id="reviveTimer">10</div>
+            </div>
+        </div>
+        <div class="revive-cancel-text">Appuyez ESPACE pour annuler</div>
+    </div>
+
+    <!-- Loot Progress Container - caché par défaut -->
+    <div class="loot-progress-container hidden" id="lootProgressContainer">
+        <div class="loot-circle">
+            <svg class="loot-svg" viewBox="0 0 100 100">
+                <!-- Cercle de fond -->
+                <circle class="loot-circle-bg" cx="50" cy="50" r="45"></circle>
+                <!-- Cercle de progression -->
+                <circle class="loot-circle-progress" id="lootCircleProgress" cx="50" cy="50" r="45"></circle>
+            </svg>
+            <div class="loot-center">
+                <img src="assets/logo.png" alt="Logo" class="loot-logo" onerror="this.style.display='none'">
+                <div class="loot-timer" id="lootTimer">7</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Laundering Progress Container - caché par défaut -->
+    <div class="laundering-progress-container hidden" id="launderingProgressContainer">
+        <div class="laundering-progress-bar">
+            <div class="laundering-progress-fill" id="launderingProgressFill"></div>
+        </div>
+        <span class="laundering-progress-text">Blanchiment en cours...</span>
+    </div>
+
+    <!-- Bandage Progress Container - caché par défaut -->
+    <div class="bandage-progress-container hidden" id="bandageProgressContainer">
+        <div class="bandage-circle">
+            <svg class="bandage-svg" viewBox="0 0 100 100">
+                <!-- Cercle de fond -->
+                <circle class="bandage-circle-bg" cx="50" cy="50" r="45"></circle>
+                <!-- Cercle de progression -->
+                <circle class="bandage-circle-progress" id="bandageCircleProgress" cx="50" cy="50" r="45"></circle>
+            </svg>
+            <div class="bandage-center">
+                <img src="assets/logo.png" alt="Logo" class="bandage-logo" onerror="this.style.display='none'">
+                <div class="bandage-timer" id="bandageTimer">8</div>
+            </div>
+        </div>
+        <div class="bandage-cancel-text">Appuyez ESPACE pour annuler</div>
+    </div>
+
+    <!-- Shop Armes Container - caché par défaut -->
+    <div id="shop-app" class="shop-container hidden">
+        <div class="shop-overlay"></div>
+        <div class="shop-window">
+            <!-- Shop Header -->
+            <header class="shop-header">
+                <div class="shop-header-left">
+                    <img src="assets/logo.png" alt="Logo" class="shop-logo" onerror="this.style.display='none'">
+                    <h1 class="shop-title">ARMURERIE</h1>
+                </div>
+                <button class="shop-btn-close" id="shopBtnClose">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                    <span>Fermer</span>
+                </button>
+            </header>
+
+            <!-- Shop Body -->
+            <div class="shop-body">
+                <!-- Sidebar catégories -->
+                <nav class="shop-sidebar" id="shopSidebar">
+                    <!-- Les catégories seront injectées ici -->
+                </nav>
+
+                <!-- Grille de produits -->
+                <main class="shop-main">
+                    <div class="shop-grid" id="shopGrid">
+                        <!-- Les cartes armes seront injectées ici -->
+                    </div>
+                </main>
+            </div>
+
+            <!-- Shop Footer -->
+            <footer class="shop-footer">
+                <span>Appuyez sur ESC pour fermer</span>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Squad Menu Container - caché par défaut -->
+    <div id="squad-app" class="squad-container hidden">
+        <div class="squad-overlay"></div>
+        <div class="squad-window">
+            <!-- Squad Header -->
+            <header class="squad-header">
+                <button class="squad-btn-close" id="squadBtnClose">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+                <img src="assets/logo.png" alt="Logo" class="squad-logo" onerror="this.style.display='none'">
+                <span class="squad-header-subtitle">Interface Réseau</span>
+                <h1 class="squad-title">SQUAD</h1>
+            </header>
+
+            <!-- Squad Content -->
+            <div class="squad-content" id="squadContent">
+                <!-- Contenu dynamique injecté par JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Kill Feed Container - toujours visible -->
+    <div id="killfeed-container"></div>
+
+    <!-- Player Interact Menu (ALT + Clic) -->
+    <div id="playerInteractMenu" class="player-interact-menu hidden">
+        <div class="player-interact-header">
+            <span class="player-interact-name" id="playerInteractName">Joueur</span>
+            <span class="player-interact-id" id="playerInteractId">[ID: 0]</span>
+        </div>
+        <div class="player-interact-option" id="piCopyId">
+            <span class="player-interact-icon">📋</span>
+            <span>Copier ID</span>
+        </div>
+        <div class="player-interact-option" id="piCopyOutfit">
+            <span class="player-interact-icon">👕</span>
+            <span>Copier Tenue</span>
+        </div>
+    </div>
+
+    <!-- Script principal -->
+    <script src="js/app.js"></script>
+</body>
+</html>
