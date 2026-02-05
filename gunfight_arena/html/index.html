@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gunfight Arena</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@700&family=Teko:wght@500;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="killfeed-ui"></div>
+
+    <div id="exit-hud" class="exit-hud">
+        <div class="exit-inner">
+            <div class="exit-key">X</div>
+            <div class="exit-text">Appuyez sur <strong>X</strong> ou tapez <strong>/quittergf</strong> pour quitter</div>
+        </div>
+    </div>
+    
+    <div id="main-ui" class="main-container">
+        <header class="app-header">
+            <div class="header-left">
+                <div class="app-logo">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"></path>
+                        <path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path>
+                    </svg>
+                    <span>GUNFIGHT ARENA</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <button id="close-main-btn" class="btn-icon" title="Fermer">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </header>
+        <main class="content-wrapper">
+            <div class="content-header">
+                <h1>Sélectionnez votre zone de combat</h1>
+                <p class="subtitle">Choisissez une arène disponible pour commencer</p>
+            </div>
+            <div id="zone-list" class="zone-grid"></div>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
