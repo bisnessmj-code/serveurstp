@@ -1,0 +1,204 @@
+:root {
+    font-size: min(.83333333vw, 1.8009478673vh) !important;
+}
+
+.compact {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+
+.compact #inventory-container:before {
+    background-color: transparent;
+}
+
+.compact .inv-container {
+    display: flex !important;
+    flex-direction: column;
+    align-items: end;
+    justify-content: space-between;
+    top: 0;
+    height: 100%;
+    width: 50% !important;
+    padding-right: .25rem;
+}
+
+.compact .inventory-playerstats {
+    position: relative;
+    top: 1rem;
+    right: 1rem;
+    display: none;
+}
+
+.compact .inventory-playerdata {
+    position: absolute;
+    top: 57vh;
+    right: 1.2vh;
+    display: none;
+}
+
+.compact .ply-inv-container {
+    height: 50%;
+}
+
+.compact .player-inventory {
+    height: 90%;
+}
+
+.compact .oth-inv-container {
+    height: 40%; padding-right: 0 !important;
+}
+
+.compact .other-inventory {
+    position: relative;
+    height: 20rem;
+}
+
+.compact .inv-options {
+    position: relative !important;
+    display: flex;
+    max-height: 5rem !important;
+    margin-top: 2vh !important;
+    min-width: unset !important;
+    width: 564px;
+    padding-right: 13px;
+    align-items: center; justify-content: center;
+}
+
+@media (min-width: 2501px) {
+    .compact .inv-options {
+        width: 850px !important;
+    }
+}
+
+/* .compact .inv-options-list {
+    width: 100%;
+    box-sizing: border-box;
+    height: unset !important;
+    margin-top: 0 !important;
+} */
+
+.compact .inv-options .inv-options-list {
+    display: flex !important;
+    justify-content: center; align-items: center;
+    gap: .25rem;
+    width: 100% !important;
+    height: 100% !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.compact .inv-option-item {
+    position: relative;
+    min-height: 3.25rem !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    font-size: 1.35vh !important;
+    margin-top: 0 !important;
+}
+
+.compact #clothmenu {
+    position: relative;
+    min-height: 3.25rem !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    font-size: 1.735vh !important;
+}
+
+.inv-option-item > p {
+    font-size: 1.35vh !important;
+}
+
+/* .compact #inventory-custom {
+    bottom: 5vh;
+    height: 4vh;
+} */
+
+.compact .custom-inventory {
+    margin-top: 2.5vh;
+    height: 36vh;
+    margin-left: 1.7vh;
+    padding-right: .6vh;
+}
+
+.compact #weapon-attachments {
+    padding: 1vh;
+}
+
+.compact .iconBigger {
+    position: relative;
+}
+
+.iconBigger > i {
+    font-size: 1.35vh !important;
+}
+
+.compact .clothes-inventory {
+    position: relative;
+    right: 95vh;
+    top: -50vh !important;
+}
+
+.compact .returnButton {
+    width: 1vh !important;
+}
+
+.compact .logo-container {
+    top: 3vh;
+    left: 8vh !important;
+}
+
+.compact .sixth-slot {
+    left: 5vh;
+}
+
+.compact .ply-iteminfo-container {
+    position: absolute;
+    z-index: 9999;
+    font-family: "CabinetGrotesk-Bold";
+    display: flex;
+    align-items: center;
+    justify-content: baseline;
+    left: 0;
+    top: 0;
+    width: 15vw;
+    min-height: 16vh;
+    display: none;
+    min-width: auto;
+    margin: auto;
+
+    padding: 1.5vh;
+    border-radius: 0.5vh;
+    border: 0.1vh solid rgba(15, 130, 230, 0);
+    background: radial-gradient(
+                120.05% 120.05% at 50.14% -58.24%,
+                rgba(69, 100, 129, 0) 0%,
+                #0e151b 100%
+            )
+            padding-box,
+        linear-gradient(
+                180deg,
+                rgba(52, 68, 82, 0) 30%,
+                var(--primary-color) 70%
+            )
+            border-box;
+    border-image-source: linear-gradient(
+        180deg,
+        rgba(52, 68, 82, 0) 0%,
+        #ffffff 100%
+    );
+}
+
+.compact #weapon-attachments p {
+    font-size: 0.8vh !important;
+}
+
+.compact #player-inv-label {
+    font-size: 2rem !important;
+    line-height: 4rem;
+    max-width: 22.5rem !important;
+}
+
+.compact .player-inv-info {
+    padding-left: 1rem !important;
+}
